@@ -4,7 +4,7 @@ from flask_restful import Resource, Api, reqparse
 app = Flask(__name__)
 api = Api(app)
 
-@app.route("prices", methods=["POST"])
+@app.route("/prices", methods=["POST"])
 def prices():
     if request.form:
         input = request.form
