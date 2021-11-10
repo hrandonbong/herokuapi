@@ -1,4 +1,5 @@
 from flask import Flask
+from flask import request
 from flask_restful import Resource, Api, reqparse
 import requests
 from bs4 import BeautifulSoup
@@ -10,9 +11,9 @@ api = Api(app)
 def prices():
     if request.form:
         input = request.form
-    elif request.json:
+    else:
         input = request.json
-    item = input["item"]
+    item = input["items"]
     url = "https://www.google.com/search?q=" + item + "&tbm=shop"
     html = requests.get(url).text
     soup = BeautifulSoup(html, "html.parser")
